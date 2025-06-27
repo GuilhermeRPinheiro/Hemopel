@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logocabecalhopng from '../assets/logocabecalho.png';
+import { Link } from 'react-router-dom'
 
 export function MyNavbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -41,14 +42,20 @@ export function MyNavbar() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-7 mt-4 md:mt-0 md:ml-10">
 
           <button className="bg-[#C8392F] rounded-full px-12 py-2 font-bold text-lg hidden md:block mr-[2rem] cursor-pointer">
-            Agendar Doação
+            <Link to="/agende">Agendar Doação</Link>
           </button>
 
         
           <ul className="flex flex-col md:flex-row gap-4 md:gap-6 text-xl font-medium text-white items-start md:items-center mr-[3rem]">
-            <li className="cursor-pointer ">Informações</li>
-            <li className="cursor-pointer ">Doações</li>
-            <li className="cursor-pointer ">Campanhas</li>
+            <li className="cursor-pointer ">
+              <Link to="/">Informações</Link>
+              </li>
+            <li className="cursor-pointer ">
+              <Link to="/">Doações</Link>
+              </li>
+            <li className="cursor-pointer ">
+              <Link to="/campanhas">Campanhas</Link>
+              </li>
           </ul>
 
           <button className="bg-[#C8392F] rounded-full px-10 py-2 font-bold text-lg mt-3 md:mt-0 hidden md:block mr-[4rem] cursor-pointer">

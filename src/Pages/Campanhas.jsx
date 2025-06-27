@@ -1,5 +1,5 @@
 import React from "react";
-import coracao_branco from '../assets/coracaobranco.png';
+import coracao_branco from '../assets/coracaoBranco.png';
 import CardCamp from '../Components/CardCamp';
 
 const campanhas = [

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import logofooter from '../assets/logofooter.png';
 import telfooter from '../assets/Vector.svg';
 import instafooter from '../assets/mdi_instagram.svg';
@@ -8,8 +9,6 @@ export function Footer() {
   return (
     <>
       <div className="bg-white flex flex-col md:flex-row items-center md:items-start text-center md:text-left px-6 md:px-20 pt-8 md:pt-[3rem] pb-8 md:pb-[3rem] gap-12 md:gap-32 lg:gap-48">
-        
-       
         <img
           src={logofooter}
           alt="Hemopel"
@@ -25,7 +24,9 @@ export function Footer() {
           <ul className="space-y-2">
             <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Informações</li>
             <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Doações</li>
-            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Campanhas</li>
+            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">
+            <Link to="/campanhas">Campanhas</Link>
+              </li>
             <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Agendamento</li>
           </ul>
         </div>
