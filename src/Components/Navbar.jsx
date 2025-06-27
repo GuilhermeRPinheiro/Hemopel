@@ -1,36 +1,72 @@
-
-import logocabecalho from '../assets/logocabecalho.svg'
-import logocabecalhopng from '../assets/logocabecalho.png'
+import React, { useState } from 'react';
+import logocabecalhopng from '../assets/logocabecalho.png';
 
 export function MyNavbar() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
-    <nav className="bg-[#91302A] text-white p-4 flex items-center">
+    <nav className="bg-[#91302A] text-white px-4 py-3 flex items-center justify-between flex-wrap">
 
-      <img src={logocabecalhopng} alt="" className="md:w-[14.4375rem] md:h-[5.55rem] md:ml-7 md:mr-[6.25rem] w-[10rem] h-[4rem] mr-[9.5rem]"/>
+      <div className="flex items-center flex-shrink-0 cursor-pointer">
+        <img
+          src={logocabecalhopng}
+          alt="Logo"
+          className="w-40 h-16 md:w-[12.4375rem] md:h-[5rem] md:ml-[2rem]"
+        />
+      </div>
 
-      <button className="w-96 h-14 bg-[#C8392F] rounded-[30px] items-center cursor-pointer mr-[6.25rem] md:block hidden">
-        <span className="w-80 h-14 justify-start text-4xl font-bold font-['Montserrat']">Agendar Doação</span>
+     
+      <div className="block md:hidden">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex items-center px-3 py-2 border rounded text-white border-white"
+        >
+          <svg
+            className="fill-current h-5 w-5"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z" />
+          </svg>
         </button>
+      </div>
 
-        <ul className="md:flex gap-7 mr-[6.25rem] hidden ">
-          <li className="w-44 h-7 justify-start text-white text-2xl font-medium font-['Montserrat'] cursor-pointer"><link rel="stylesheet" href="" />Informações</li>
-          <li className="w-44 h-7 justify-start text-white text-2xl font-medium font-['Montserrat'] cursor-pointer"><link rel="stylesheet" href="" />Doações</li>
-          <li className="w-44 h-7 justify-start text-white text-2xl font-medium font-['Montserrat'] cursor-pointer"><link rel="stylesheet" href=""/>Campanhas</li>
-        </ul>
+     
+      <div
+        className={`w-full md:flex md:items-center md:w-auto transition-all duration-300 ease-in-out ${
+          menuOpen ? 'block' : 'hidden'
+        }`}
+      >
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-7 mt-4 md:mt-0 md:ml-10">
 
-              <button className="w-80 h-14 bg-[#C8392F] rounded-[30px] items-center cursor-pointer mr-[6.25rem] md:block hidden">
-        <span className="w-80 h-14 justify-start text-4xl font-bold font-['Montserrat']">Login</span>
-        </button>
+          <button className="bg-[#C8392F] rounded-full px-12 py-2 font-bold text-lg hidden md:block mr-[2rem] cursor-pointer">
+            Agendar Doação
+          </button>
 
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        
+          <ul className="flex flex-col md:flex-row gap-4 md:gap-6 text-xl font-medium text-white items-start md:items-center mr-[3rem]">
+            <li className="cursor-pointer ">Informações</li>
+            <li className="cursor-pointer ">Doações</li>
+            <li className="cursor-pointer ">Campanhas</li>
+          </ul>
 
-    </div>
+          <button className="bg-[#C8392F] rounded-full px-10 py-2 font-bold text-lg mt-3 md:mt-0 hidden md:block mr-[4rem] cursor-pointer">
+            Login
+          </button>
+
+          <div className="flex flex-col gap-2 mt-4 md:hidden">
+            <button className="bg-[#C8392F] rounded-full px-4 py-2 font-bold text-base cursor-pointer">
+              Agendar Doação
+            </button>
+            <button className="bg-[#C8392F] rounded-full px-4 py-2 font-bold text-base cursor-pointer">
+              Login
+            </button>
+          </div>
+
+        </div>
+
+      </div>
     </nav>
-  );
+  )
 }
