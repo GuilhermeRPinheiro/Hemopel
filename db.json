@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "name": "Marlon Ramos",
+      "email": "marlon@teste.com",
+      "password": "adminpassword",
+      "adress": "Rua 123",
+      "profilePicture": "/images/User5.png",
+      "role": "admin",
+      "id": "1"
+    }
+
+}

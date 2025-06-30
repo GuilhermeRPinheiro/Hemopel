@@ -1,5 +1,11 @@
 import React from "react";
 
+
+
+
+
+
+
 function Cadastro() {
   return (
     <section className="bg-[#C66A67] min-h-screen flex items-center justify-center px-4 text-black">
@@ -37,6 +43,11 @@ function Cadastro() {
           <input
             type="email"
             placeholder="E-mail"
+            className="w-full p-3 rounded-md bg-[#FFD8CC]"
+          />
+          <input
+            type="password"
+            placeholder="Digite sua senha"
             className="w-full p-3 rounded-md bg-[#FFD8CC]"
           />
 
