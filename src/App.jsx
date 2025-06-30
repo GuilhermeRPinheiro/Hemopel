@@ -6,7 +6,7 @@ import Campanhas from './Pages/Campanhas'
 import Agende from './Pages/Agende'
 import Perfil from './Pages/Perfil'
 import Landing from './Pages/Landing'
-
+import Login from './Pages/Login'
 function App() {
   return (
     <>
@@ -19,6 +19,7 @@ function App() {
           <Route path="/campanhas" element={<Campanhas />} />
           <Route path="/agende" element={<Agende />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path ="/login" element={<Login/>}/>
         </Routes>
       </main>
 

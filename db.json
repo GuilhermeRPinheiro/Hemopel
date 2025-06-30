@@ -23,9 +23,20 @@
       "profilePicture": "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
       "role": "user",
       "id": "2"
+    },
+    {
+      "id": "bdb1",
+      "name": "Marlon Teste",
+      "birthDate": "2000-05-17",
+      "whatsapp": "53981649558",
+      "email": "marlonrdacostaaaaaa@gmail.com",
+      "password": "12345",
+      "gender": "Masculino",
+      "bloodType": "O+",
+      "role": "user",
+      "notificacoes": true
     }
   ],
-  
   "campaigns": [
     {
       "id": "1",
