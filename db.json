@@ -4,10 +4,38 @@
       "name": "Marlon Ramos",
       "email": "marlon@teste.com",
       "password": "adminpassword",
-      "adress": "Rua 123",
-      "profilePicture": "/images/User5.png",
+      "birthDate": "2025-06-30",
+      "whatsapp": "53981649558",
+      "gender": "Masculino",
+      "bloodType": "O+",
+      "profilePicture": "https://flowbite.com/docs/images/people/profile-picture-5.jpg",
       "role": "admin",
       "id": "1"
+    },
+    {
+      "name": "Marlon Teste",
+      "email": "teste@teste.com",
+      "password": "teste",
+      "birthDate": "2025-02-28",
+      "whatsapp": "539816412358",
+      "gender": "Masculino",
+      "bloodType": "O+",
+      "profilePicture": "https://flowbite.com/docs/images/people/profile-picture-2.jpg",
+      "role": "user",
+      "id": "2"
     }
-
+  ],
+  
+  "campaigns": [
+    {
+      "id": "1",
+      "name": "Teste",
+      "progress": 500
+    },
+    {
+      "id": "2",
+      "name": "Teste2",
+      "progress": 500
+    }
+  ]
 }

@@ -89,7 +89,7 @@ function Cadastro() {
 
           <button
             type="submit"
-            className="bg-[#c63e34] w-full text-white py-3 rounded-xl font-semibold"
+            className="bg-[#c63e34] w-full text-white py-3 rounded-xl font-semibold cursor-pointer"
           >
             Cadastrar-se
           </button>
