@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from 'react-router-dom'
 import logofooter from '../assets/logofooter.png';
 import telfooter from '../assets/Vector.svg';

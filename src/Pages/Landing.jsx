@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import imagemPrincipal from '../assets/368cc560a47ec94ad21baa5e4ecdcb5c50bd1018.png'
 import logo from '../assets/logo.svg'

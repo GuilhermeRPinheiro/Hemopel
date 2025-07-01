@@ -1,4 +1,3 @@
-import React from "react";
 import iconeCoracao from '../assets/coracaobranco.png';
 
 function Recusado() {

@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useAuth } from "../Contexts/AuthContext"
-import Swal from "sweetalert2"
 import { useNavigate, Link } from "react-router-dom"
 
 function Login() {

@@ -1,4 +1,3 @@
-import React from "react";
 import ImgDuvidas from '../assets/duvidasimg.png';
 
 function Duvidas() {

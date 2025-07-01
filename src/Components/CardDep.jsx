@@ -1,4 +1,3 @@
-import React from "react";
 import perfil from "../assets/profile.png"
 
 

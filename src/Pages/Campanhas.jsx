@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import coracao_branco from '../assets/coracaoBranco.png'
 import CardCamp from '../Components/CardCamp'
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import iconeCoracao from '../assets/coracaoBranco.png';
 import { Link } from 'react-router-dom'
 

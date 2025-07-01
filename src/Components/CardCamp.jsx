@@ -1,4 +1,3 @@
-import React from "react";
 
 // Função para formatar data em DD/MM/AAAA
 function formatarData(data) {

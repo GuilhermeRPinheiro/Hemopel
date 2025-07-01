@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import gear from '../assets/gear.svg'
 import perfilDefault from '../assets/profile.png'
 import { useAuth } from '../Contexts/AuthContext'
