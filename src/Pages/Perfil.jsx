@@ -56,40 +56,46 @@ function Perfil() {
   }
 
   async function handleAddCampanha() {
-    const { value: formValues } = await Swal.fire({
-      title: "Nova campanha",
-      html:
-        '<input id="swal-nome" class="swal2-input" placeholder="Nome da campanha">' +
-        '<input id="swal-inicio" type="date" class="swal2-input" placeholder="Data de início">',
-      focusConfirm: false,
-      showCancelButton: true,
-      preConfirm: () => {
-        const nome = document.getElementById('swal-nome').value;
-        const dataInicio = document.getElementById('swal-inicio').value;
-        if (!nome || !dataInicio) {
-          Swal.showValidationMessage('Preencha todos os campos');
-          return;
-        }
-        return { nome, dataInicio };
+  const { value: formValues } = await Swal.fire({
+    title: "Nova campanha",
+    html:
+      '<input id="swal-nome" class="swal2-input" placeholder="Nome da campanha">' +
+      '<input id="swal-inicio" type="date" class="swal2-input" placeholder="Data de início">',
+    focusConfirm: false,
+    showCancelButton: true,
+    preConfirm: () => {
+      const nome = document.getElementById('swal-nome').value;
+      const dataInicio = document.getElementById('swal-inicio').value;
+      if (!nome || !dataInicio) {
+        Swal.showValidationMessage('Preencha todos os campos');
+        return;
       }
-    });
-
-    if (formValues) {
-      const novaCampanha = {
-        nome: formValues.nome,
-        progresso: 0,
-        dataInicio: formValues.dataInicio
-      };
-      await fetch("http://localhost:3000/campaigns", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(novaCampanha)
-      });
-      Swal.fire("Campanha adicionada!", "", "success");
-      loadCampanhas();
+      return { nome, dataInicio };
     }
-  }
+  });
 
+  if (formValues) {
+    const novaCampanha = {
+      nome: formValues.nome,
+      progresso: 0,
+      dataInicio: formValues.dataInicio
+    };
+    // Salva no servidor
+    const res = await fetch("http://localhost:3000/campaigns", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(novaCampanha)
+    });
+    const campanhaCriada = await res.json();
+
+    // Atualiza LocalStorage
+    const campanhasSalvas = JSON.parse(localStorage.getItem("campanhas")) || [];
+    localStorage.setItem("campanhas", JSON.stringify([...campanhasSalvas, campanhaCriada]));
+
+    Swal.fire("Campanha adicionada!", "", "success");
+    loadCampanhas();
+  }
+}
   async function handleEditProgresso(campanha) {
     const { value: progresso } = await Swal.fire({
       title: `Editar progresso: ${campanha.nome}`,
@@ -136,13 +142,22 @@ function Perfil() {
     cancelButtonText: "Cancelar"
   })
   if (confirm.isConfirmed) {
-    // Salva a data atual como dataFim no formato YYYY-MM-DD
     const dataFim = new Date().toISOString().split('T')[0]
     await fetch(`http://localhost:3000/campaigns/${campanha.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ progresso: 100, dataFim })
     })
+
+    // Atualiza o LocalStorage também
+    const campanhasSalvas = JSON.parse(localStorage.getItem("campanhas")) || []
+    const campanhasAtualizadas = campanhasSalvas.map(c =>
+      c.id === campanha.id
+        ? { ...c, progresso: 100, dataFim }
+        : c
+    )
+    localStorage.setItem("campanhas", JSON.stringify(campanhasAtualizadas))
+
     Swal.fire("Campanha concluída!", "", "success")
     loadCampanhas()
   }

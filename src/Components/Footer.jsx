@@ -21,12 +21,15 @@ export function Footer() {
           </h1>
           <div className="w-32 md:w-64 h-[1px] bg-black mb-4" />
           <ul className="space-y-2">
-            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Informações</li>
-            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Doações</li>
+            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">
+              <Link to="/informacoes">Informações</Link>
+              </li>
             <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">
             <Link to="/campanhas">Campanhas</Link>
               </li>
-            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">Agendamento</li>
+            <li className="text-[#D75044] text-sm md:text-xl font-semibold font-['Montserrat']">
+             <Link disabled>Agendamento</Link>
+              </li>
           </ul>
         </div>
 

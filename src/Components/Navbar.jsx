@@ -16,11 +16,13 @@ export function MyNavbar() {
   return (
     <nav className="bg-[#91302A] text-white px-4 py-3 flex items-center justify-between flex-wrap">
       <div className="flex items-center flex-shrink-0 cursor-pointer">
+        <Link to="/">
         <img
           src={logocabecalhopng}
           alt="Logo"
           className="w-40 h-16 md:w-[12.4375rem] md:h-[5rem] md:ml-[2rem]"
         />
+        </Link>
       </div>
       <div className="block md:hidden">
         <button

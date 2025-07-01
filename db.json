@@ -56,6 +56,19 @@
       "progresso": 100,
       "dataInicio": "2000-01-16",
       "dataFim": "2025-07-01"
+    },
+    {
+      "id": "3979",
+      "nome": "CamapanhaTeste2",
+      "progresso": 100,
+      "dataInicio": "1999-05-15",
+      "dataFim": "2025-07-01"
+    },
+    {
+      "id": "4c4d",
+      "nome": "CampanhaAtiva",
+      "progresso": 94,
+      "dataInicio": "2000-12-01"
     }
   ]
 }
