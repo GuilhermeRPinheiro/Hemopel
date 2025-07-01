@@ -71,7 +71,8 @@
     {
       "id": "8a4b",
       "nome": "Bráulio",
-      "progresso": 33
+      "progresso": 100,
+      "dataFim": "2025-07-01"
     }
   ]
 }
