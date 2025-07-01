@@ -51,27 +51,10 @@
   ],
   "campaigns": [
     {
-      "id": "b1a1",
-      "nome": "Joãozinho Do Teste",
+      "id": "3504",
+      "nome": "CampanhaTeste",
       "progresso": 100,
-      "inicio": "2025-06-01T09:00"
-    },
-    {
-      "id": "ef1a",
-      "nome": "Teste",
-      "progresso": 100,
-      "inicio": "2024-06-01T09:00",
-      "fim": "2024-06-30T18:00"
-    },
-    {
-      "id": "419b",
-      "nome": "Teste1",
-      "progresso": 100
-    },
-    {
-      "id": "8a4b",
-      "nome": "Bráulio",
-      "progresso": 100,
+      "dataInicio": "2000-01-16",
       "dataFim": "2025-07-01"
     }
   ]

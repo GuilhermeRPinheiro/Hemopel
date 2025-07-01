@@ -84,8 +84,8 @@ function Campanhas() {
               <CardCamp
                 key={index}
                 nome={card.nome}
-                inicio={card.inicio}
-                fim={card.fim}
+                inicio={card.dataInicio || card.inicio}
+                fim={card.dataFim || card.fim}
               />
             ))}
           </div>

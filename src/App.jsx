@@ -7,6 +7,7 @@ import Agende from './Pages/Agende'
 import Perfil from './Pages/Perfil'
 import Landing from './Pages/Landing'
 import Login from './Pages/Login'
+import Duvidas from './Pages/Duvidas'
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
       <main className="flex-grow ">
         <Routes>
           <Route path="/" element={<Landing/>}/>
+          <Route path="/informacoes" element={<Duvidas/>}/>
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/campanhas" element={<Campanhas />} />
           <Route path="/agende" element={<Agende />} />

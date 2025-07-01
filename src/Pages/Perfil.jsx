@@ -128,24 +128,25 @@ function Perfil() {
   }
 
   async function handleConcluir(campanha) {
-    const confirm = await Swal.fire({
-      title: `Concluir campanha: ${campanha.nome}?`,
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonText: "Sim, concluir",
-      cancelButtonText: "Cancelar"
+  const confirm = await Swal.fire({
+    title: `Concluir campanha: ${campanha.nome}?`,
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonText: "Sim, concluir",
+    cancelButtonText: "Cancelar"
+  })
+  if (confirm.isConfirmed) {
+    // Salva a data atual como dataFim no formato YYYY-MM-DD
+    const dataFim = new Date().toISOString().split('T')[0]
+    await fetch(`http://localhost:3000/campaigns/${campanha.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ progresso: 100, dataFim })
     })
-    if (confirm.isConfirmed) {
-      const dataFim = new Date().toISOString().split('T')[0]
-      await fetch(`http://localhost:3000/campaigns/${campanha.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ progresso: 100, dataFim })
-      })
-      Swal.fire("Campanha concluída!", "", "success")
-      loadCampanhas()
-    }
+    Swal.fire("Campanha concluída!", "", "success")
+    loadCampanhas()
   }
+}
 
   if (loading) {
     return (

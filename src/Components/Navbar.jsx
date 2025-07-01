@@ -52,11 +52,9 @@ export function MyNavbar() {
 
           <ul className="flex flex-col md:flex-row gap-4 md:gap-6 text-xl font-medium text-white items-start md:items-center mr-[3rem]">
             <li className="cursor-pointer ">
-              <Link to="/">Informações</Link>
+              <Link to="/informacoes">Informações</Link>
             </li>
-            <li className="cursor-pointer ">
-              <Link to="/">Doações</Link>
-            </li>
+
             <li className="cursor-pointer ">
               <Link to="/campanhas">Campanhas</Link>
             </li>
