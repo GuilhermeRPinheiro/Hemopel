@@ -3,6 +3,14 @@
 
 O projeto **HEMOPEL** é uma aplicação desenvolvida com **React.js**, **TailwindCSS** e **Flowbite**, focada na responsividade para dispositivos móveis e desktop, com o objetivo de auxiliar a população de Pelotas nos processos relacionados à doação de sangue. Este projeto acadêmico integra as disciplinas de Desenvolvimento Web para Dispositivos Móveis, Engenharia de Software e Programação Web com React, abordando práticas modernas de desenvolvimento como componentização, React Hooks, gerenciamento de rotas com React Router DOM e consumo de APIs REST utilizando JSON Server.
 
+
+## 👨‍🎓 Documentação Acadêmica do Projeto
+
+Segue link para mais informações sobre o processo de levantamento de requisitos e desenvolvimento da ideia e do código:
+
+[Projeto Integrado - HEMOPEL-3.pdf](https://github.com/user-attachments/files/20997902/Projeto.Integrado.-.HEMOPEL-3.pdf)
+
+
 ## 📌 Descrição
 
 O sistema HEMOPEL busca facilitar e automatizar etapas essenciais da doação de sangue, proporcionando ao usuário uma experiência intuitiva e eficiente. As funcionalidades incluem:
