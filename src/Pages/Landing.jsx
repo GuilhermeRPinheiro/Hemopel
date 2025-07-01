@@ -16,9 +16,7 @@ function Landing() {
     async function fetchData() {
       const resp = await fetch("http://localhost:3000/campaigns")
       const data = await resp.json()
-      // Ativas: progresso < 100
       setCampanhasAtivas(data.filter(c => Number(c.progresso || c.progress) < 100))
-      // Concluídas: progresso >= 100
       setCampanhasConcluidas(data.filter(c => Number(c.progresso || c.progress) >= 100))
     }
     fetchData()
@@ -26,6 +24,7 @@ function Landing() {
 
   return (
     <div className="overflow-x-hidden">
+      {/* Seção principal */}
       <section className="bg-white flex flex-col md:flex-row items-center justify-between py-10 px-6 mx-auto gap-16 w-full">
         <div className="md:w-1/2 flex justify-center md:justify-start">
           <img
@@ -50,6 +49,7 @@ function Landing() {
         </div>
       </section>
 
+      {/* Seção Campanhas */}
       <section
         className="relative w-full flex flex-col py-10 items-center gap-10 bg-center bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${imagemBaixo})` }}
@@ -101,19 +101,22 @@ function Landing() {
 
           {/* Cards - Concluídas */}
           <div className="order-2 md:order-1 w-full md:w-1/2 flex flex-col">
-            <div className="flex items-center md:justify-start justify-center gap-3 mb-6 md:mb-10 md:ml-55">
+            <div className="flex items-center md:justify-start justify-center gap-3 mb-6 md:mb-10">
               <h1 className="text-white text-2xl md:text-2xl font-extrabold font-['Montserrat']">
                 Concluídas
               </h1>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
               {campanhasConcluidas.length === 0 ? (
                 <div className="text-white text-center text-lg col-span-2">Nenhuma campanha concluída</div>
               ) : (
                 campanhasConcluidas.map((card, index) => (
-                  <div key={index} className="flex justify-center px-2">
-                    <CardCamp nome={card.nome} inicio={card.inicio} fim={card.fim} />
-                  </div>
+                  <CardCamp
+                    key={index}
+                    nome={card.nome}
+                    inicio={card.inicio}
+                    fim={card.fim}
+                  />
                 ))
               )}
             </div>
@@ -129,6 +132,7 @@ function Landing() {
         </div>
       </section>
 
+      {/* Depoimentos */}
       <section className="w-full bg-[#91302A] py-10">
         <div className="flex items-center justify-center gap-3 mb-10">
           <img src={logo} alt="" className="w-[3rem] h-[3rem]" />

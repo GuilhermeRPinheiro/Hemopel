@@ -41,8 +41,12 @@ function Campanhas() {
             campanhas.map((campanha, idx) => (
               <div key={idx} className="mx-2 sm:mx-8">
                 <div className="flex justify-between text-sm m-2">
-                  <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">{campanha.nome}</span>
-                  <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">{campanha.progresso || campanha.progress}%</span>
+                  <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">
+                    {campanha.nome}
+                  </span>
+                  <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">
+                    {campanha.progresso || campanha.progress}%
+                  </span>
                 </div>
                 <div className="w-full bg-white rounded-full h-3 m-2">
                   <div
@@ -50,7 +54,6 @@ function Campanhas() {
                     style={{ width: `${campanha.progresso || campanha.progress}%` }}
                   ></div>
                 </div>
-                {/* Nenhum botão de editar/excluir */}
               </div>
             ))
           )}
@@ -76,7 +79,7 @@ function Campanhas() {
         </div>
 
         <div className="mt-10 px-2 sm:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:ml-[4.5rem] ml-[3rem]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
             {cards.map((card, index) => (
               <CardCamp
                 key={index}
