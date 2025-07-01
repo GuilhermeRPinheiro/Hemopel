@@ -39,14 +39,22 @@
   ],
   "campaigns": [
     {
-      "id": "1",
-      "name": "Teste",
-      "progress": 500
+      "id": "b1a1",
+      "nome": "Joãozinho Do Teste",
+      "progresso": 100,
+      "inicio": "2025-06-01T09:00"
     },
     {
-      "id": "2",
-      "name": "Teste2",
-      "progress": 500
+      "id": "ef1a",
+      "nome": "Teste",
+      "progresso": 100,
+      "inicio": "2024-06-01T09:00",
+      "fim": "2024-06-30T18:00"
+    },
+    {
+      "id": "8138",
+      "nome": "Maria",
+      "progresso": 60
     }
   ]
 }

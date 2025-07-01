@@ -1,33 +1,29 @@
-import React from "react";
-import coracao_branco from '../assets/coracaoBranco.png';
-import CardCamp from '../Components/CardCamp';
-
-const campanhas = [
-  { nome: 'Fulano da Silva', progresso: 86 },
-  { nome: 'Ciclano Junior', progresso: 50 },
-  { nome: 'Beltrano Santos', progresso: 30 },
-  { nome: 'Fulano da Silva', progresso: 65 },
-  { nome: 'Ciclano Junior', progresso: 15 },
-  { nome: 'Beltrano Santos', progresso: 90 },
-];
-
-const cards = [
-  { nome: 'Fulano da Silva', inicio: '01/06/25', fim: '30/06/25' },
-  { nome: 'Ciclano Junior', inicio: '10/06/25', fim: '25/06/25' },
-  { nome: 'Beltrano Santos', inicio: '05/06/25', fim: '20/06/25' },
-  { nome: 'Ana Paula', inicio: '02/06/25', fim: '28/06/25' },
-  { nome: 'Lucas Lima', inicio: '15/06/25', fim: '30/06/25' },
-  { nome: 'Maria Souza', inicio: '01/06/25', fim: '15/06/25' },
-  { nome: 'João Pedro', inicio: '03/06/25', fim: '29/06/25' },
-  { nome: 'Fernanda Dias', inicio: '07/06/25', fim: '22/06/25' },
-];
+import React, { useEffect, useState } from "react"
+import coracao_branco from '../assets/coracaoBranco.png'
+import CardCamp from '../Components/CardCamp'
 
 function Campanhas() {
+  const [campanhas, setCampanhas] = useState([])
+  const [cards, setCards] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true)
+      const resp = await fetch("http://localhost:3000/campaigns")
+      const data = await resp.json()
+      setCampanhas(data.filter(c => Number(c.progresso || c.progress) < 100))
+      setCards(data.filter(c => Number(c.progresso || c.progress) >= 100))
+      setLoading(false)
+    }
+    fetchData()
+  }, [])
+
   return (
     <section className="bg-white min-h-screen">
       <div className="bg-white h-3" />
 
-      
+      {/* CAMPANHAS ATIVAS */}
       <div className="bg-[#91302A] mt-8 w-full max-w-[100rem] mx-auto rounded-[2.5rem] px-4 py-8">
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
           <img src={coracao_branco} alt="" className="w-12 h-10" />
@@ -37,20 +33,27 @@ function Campanhas() {
         </div>
 
         <div className="space-y-4 mt-6">
-          {campanhas.map((campanha, idx) => (
-            <div key={idx} className="mx-2 sm:mx-8">
-              <div className="flex justify-between text-sm m-2">
-                <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">{campanha.nome}</span>
-                <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">{campanha.progresso}%</span>
+          {loading ? (
+            <div className="text-white text-center text-lg">Carregando campanhas...</div>
+          ) : campanhas.length === 0 ? (
+            <div className="text-white text-center text-lg">Nenhuma campanha ativa</div>
+          ) : (
+            campanhas.map((campanha, idx) => (
+              <div key={idx} className="mx-2 sm:mx-8">
+                <div className="flex justify-between text-sm m-2">
+                  <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">{campanha.nome}</span>
+                  <span className="text-white text-base sm:text-lg font-medium font-['Montserrat']">{campanha.progresso || campanha.progress}%</span>
+                </div>
+                <div className="w-full bg-white rounded-full h-3 m-2">
+                  <div
+                    className="bg-[#4FD31F] h-3 rounded-full"
+                    style={{ width: `${campanha.progresso || campanha.progress}%` }}
+                  ></div>
+                </div>
+                {/* Nenhum botão de editar/excluir */}
               </div>
-              <div className="w-full bg-white rounded-full h-3 m-2">
-                <div
-                  className="bg-[#4FD31F] h-3 rounded-full"
-                  style={{ width: `${campanha.progresso}%` }}
-                ></div>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         <div className="flex flex-col sm:flex-row justify-around items-center mt-10 gap-6">
@@ -63,7 +66,7 @@ function Campanhas() {
         </div>
       </div>
 
-      
+      {/* CAMPANHAS CONCLUÍDAS */}
       <div className="bg-[#91302A] mt-8 w-full max-w-[100rem] mx-auto rounded-[2.5rem] px-4 py-8 mb-20">
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-center">
           <img src={coracao_branco} alt="" className="w-12 h-10" />
