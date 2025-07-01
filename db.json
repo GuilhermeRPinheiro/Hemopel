@@ -35,6 +35,18 @@
       "bloodType": "O+",
       "role": "user",
       "notificacoes": true
+    },
+    {
+      "id": "0956",
+      "name": "teste 2",
+      "birthDate": "1988-02-14",
+      "whatsapp": "121212121",
+      "email": "teste@gmail2.com",
+      "password": "12345",
+      "gender": "Feminino",
+      "bloodType": "A+",
+      "role": "user",
+      "notificacoes": true
     }
   ],
   "campaigns": [
@@ -52,9 +64,14 @@
       "fim": "2024-06-30T18:00"
     },
     {
-      "id": "8138",
-      "nome": "Maria",
-      "progresso": 60
+      "id": "419b",
+      "nome": "Teste1",
+      "progresso": 100
+    },
+    {
+      "id": "8a4b",
+      "nome": "Bráulio",
+      "progresso": 33
     }
   ]
 }

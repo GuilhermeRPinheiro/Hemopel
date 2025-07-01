@@ -1,30 +1,28 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
-import imagemPrincipal from '../assets/368cc560a47ec94ad21baa5e4ecdcb5c50bd1018.png';
-import logo from '../assets/logo.svg';
-import imagemBaixo from '../assets/6e37a0aab8a9daed540dbebda76f4ec846123469.png';
-import seta from '../assets/seta.svg';
-import CardCamp from '../Components/CardCamp';
-import CardDep from '../Components/CardDep';
-
-const campanhas = [
-  { nome: 'Fulano da Silva', progresso: 86 },
-  { nome: 'Ciclano Junior', progresso: 50 },
-  { nome: 'Beltrano Santos', progresso: 30 },
-  { nome: 'Fulano da Silva', progresso: 65 },
-  { nome: 'Ciclano Junior', progresso: 15 },
-  { nome: 'Beltrano Santos', progresso: 90 },
-];
-
-const cards = [
-  { nome: 'Fulano da Silva', inicio: '01/06/25', fim: '30/06/25' },
-  { nome: 'Ciclano Junior', inicio: '10/06/25', fim: '25/06/25' },
-  { nome: 'Beltrano Santos', inicio: '05/06/25', fim: '20/06/25' },
-  { nome: 'Ana Paula', inicio: '02/06/25', fim: '28/06/25' },
-];
+import React, { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
+import imagemPrincipal from '../assets/368cc560a47ec94ad21baa5e4ecdcb5c50bd1018.png'
+import logo from '../assets/logo.svg'
+import imagemBaixo from '../assets/6e37a0aab8a9daed540dbebda76f4ec846123469.png'
+import seta from '../assets/seta.svg'
+import CardCamp from '../Components/CardCamp'
+import CardDep from '../Components/CardDep'
 
 function Landing() {
-  const navigate = useNavigate(); // <<<<<<<<<< DECLARE AQUI
+  const navigate = useNavigate()
+  const [campanhasAtivas, setCampanhasAtivas] = useState([])
+  const [campanhasConcluidas, setCampanhasConcluidas] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const resp = await fetch("http://localhost:3000/campaigns")
+      const data = await resp.json()
+      // Ativas: progresso < 100
+      setCampanhasAtivas(data.filter(c => Number(c.progresso || c.progress) < 100))
+      // Concluídas: progresso >= 100
+      setCampanhasConcluidas(data.filter(c => Number(c.progresso || c.progress) >= 100))
+    }
+    fetchData()
+  }, [])
 
   return (
     <div className="overflow-x-hidden">
@@ -36,7 +34,6 @@ function Landing() {
             className="w-full max-w-[766px] md:max-w-[530px] max-h-[749px] object-contain md:ml-50"
           />
         </div>
-
         <div className="md:w-1/2 flex flex-col items-center md:ml-30 md:items-start text-center md:text-left">
           <h1 className="text-[#91302A] text-[24px] w-60 md:h-30 md:leading-[1.1] md:w-130 md:text-[50px] font-extrabold font-['Montserrat']">
             Torne-se agora um doador de sangue
@@ -45,7 +42,7 @@ function Landing() {
             Cadastre-se para se tornar um doador, agendar doações e salvar vidas!
           </h2>
           <button
-            onClick={() => navigate('/cadastro')}  // <<<< Botão vai pra página cadastro
+            onClick={() => navigate('/cadastro')}
             className="bg-[#C8392F] rounded-[0.9375rem] w-[17.5rem] h-[4rem] text-white text-[2rem] font-extrabold font-['Montserrat'] mt-6 cursor-pointer"
           >
             Cadastrar-se
@@ -70,27 +67,31 @@ function Landing() {
             <h2 className="text-white text-xl md:text-2xl font-extrabold mb-4 md:mb-6 text-center">
               Ativas
             </h2>
-            {campanhas.map((campanha, idx) => (
-              <div key={idx} className="mt-4 mx-2 md:mx-4 mb-6">
-                <div className="flex justify-between text-sm">
-                  <span className="text-white text-base md:text-lg font-medium font-['Montserrat']">
-                    {campanha.nome}
-                  </span>
-                  <span className="text-white text-base md:text-lg font-medium font-['Montserrat']">
-                    {campanha.progresso}%
-                  </span>
+            {campanhasAtivas.length === 0 ? (
+              <div className="text-white text-center text-lg">Nenhuma campanha ativa</div>
+            ) : (
+              campanhasAtivas.map((campanha, idx) => (
+                <div key={idx} className="mt-4 mx-2 md:mx-4 mb-6">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-white text-base md:text-lg font-medium font-['Montserrat']">
+                      {campanha.nome}
+                    </span>
+                    <span className="text-white text-base md:text-lg font-medium font-['Montserrat']">
+                      {campanha.progresso || campanha.progress}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-white rounded-full h-3">
+                    <div
+                      className="bg-[#4FD31F] h-3 rounded-full"
+                      style={{ width: `${campanha.progresso || campanha.progress}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="w-full bg-white rounded-full h-3">
-                  <div
-                    className="bg-[#4FD31F] h-3 rounded-full"
-                    style={{ width: `${campanha.progresso}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+              ))
+            )}
             <div className="flex flex-col md:flex-row justify-around items-center mb-10 gap-6">
               <button
-                onClick={() => navigate('/campanhas')}  // <<<< Botão vai pra página campanhas
+                onClick={() => navigate('/campanhas')}
                 className="bg-[#C8392F] hover:bg-[#c34033] px-10 py-3 rounded-2xl font-bold shadow-md text-xl md:text-3xl cursor-pointer w-full md:w-auto"
               >
                 Saiba Mais
@@ -105,15 +106,17 @@ function Landing() {
                 Concluídas
               </h1>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center">
-              {cards.map((card, index) => (
-                <div key={index} className="flex justify-center px-2">
-                  <CardCamp nome={card.nome} inicio={card.inicio} fim={card.fim} />
-                </div>
-              ))}
+              {campanhasConcluidas.length === 0 ? (
+                <div className="text-white text-center text-lg col-span-2">Nenhuma campanha concluída</div>
+              ) : (
+                campanhasConcluidas.map((card, index) => (
+                  <div key={index} className="flex justify-center px-2">
+                    <CardCamp nome={card.nome} inicio={card.inicio} fim={card.fim} />
+                  </div>
+                ))
+              )}
             </div>
-
             <div className="flex flex-col md:flex-row justify-around items-center mb-10 gap-6 mt-10 w-full px-4">
               <button
                 onClick={() => navigate('/campanhas')}
@@ -133,7 +136,6 @@ function Landing() {
             Depoimentos
           </h1>
         </div>
-
         <div className="flex flex-col sm:flex-row justify-center items-center md:gap-30 gap-6 px-4 md:py-10 md:mb-15">
           <img
             src={seta}
@@ -151,7 +153,7 @@ function Landing() {
         </div>
       </section>
     </div>
-  );
+  )
 }
 
-export default Landing;
+export default Landing
