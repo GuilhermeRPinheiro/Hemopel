@@ -119,7 +119,7 @@ npm run dev
 
 ## 💻 Link para o Projeto (Repositório)
 
-https://github.com/MarlonRamos07/Hemopel
+https://github.com/GuilhermeRPinheiro/Hemopel
 
 ## 🎨 Layout (Figma)
 
@@ -133,7 +133,5 @@ Projeto desenvolvido por:
 - Marlon Ramos da Costa
 - Guilherme Ribeiro Pinheiro
 - João Vitor Goes Nunes Moraes
-
-**Portfólio:** https://portfolio-marlon-umber.vercel.app
 
 📅 **Data de criação:** Junho, 2025
